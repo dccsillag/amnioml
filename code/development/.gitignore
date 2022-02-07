@@ -1,0 +1,76 @@
+# Folders that Git should ignore
+*.ipynb_checkpoints/
+/data
+/docs
+/eval
+/logs
+/models
+/personal
+
+# File extensions that Git should ignore
+
+# tex #
+#######
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+
+# images #
+##########
+*.pdf
+*.png
+
+# data files #
+##############
+*.csv
+*.xls
+*.pkl
+*.npy
+*.Rdata
+*.Rds
+
+# Python #
+##########
+*.pyc
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite

@@ -1,0 +1,28 @@
+# Color taken from https://sashamaps.net/docs/resources/20-colors/
+# Only colors with accessibility >=99% are here.
+RED = (230 / 255, 25 / 255, 75 / 255)
+GREEN = (60 / 255, 180 / 255, 75 / 255)
+YELLOW = (255 / 255, 255 / 255, 25 / 255)
+BLUE = (0 / 255, 130 / 255, 200 / 255)
+ORANGE = (245 / 255, 130 / 255, 48 / 255)
+CYAN = (70 / 255, 240 / 255, 240 / 255)
+MAGENTA = (240 / 255, 50 / 255, 230 / 255)
+PINK = (250 / 255, 190 / 255, 212 / 255)
+TEAL = (0 / 255, 128 / 255, 128 / 255)
+LAVENDER = (220 / 255, 190 / 255, 255 / 255)
+BROWN = (170 / 255, 110 / 255, 40 / 255)
+BEIGE = (255 / 255, 250 / 255, 200 / 255)
+MAROON = (128 / 255, 0 / 255, 0 / 255)
+MINT = (170 / 255, 255 / 255, 195 / 255)
+NAVY = (0 / 255, 0 / 255, 128 / 255)
+GREY = (128 / 255, 128 / 255, 128 / 255)
+BLACK = (0 / 255, 0 / 255, 0 / 255)
+
+MASK_ALPHA = (0.6,)
+
+TARGET = BLUE + MASK_ALPHA
+PREDICTION = BLUE + MASK_ALPHA
+MISSING = PINK + MASK_ALPHA
+EXCESS = MINT + MASK_ALPHA
+CONTOUR = BLUE + (1,)
+CONFIDENCE = MINT + MASK_ALPHA

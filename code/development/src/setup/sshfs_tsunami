@@ -1,0 +1,80 @@
+#!/bin/bash
+
+echoHelp() {
+# `cat << EOF` This means that cat should stop reading when EOF is detected
+cat << EOF
+usage: sshfs_tsunami <user> [-h] [-n N] [-ro] [-mp] [-V]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n N, --tsunami-number
+  -ro, --read-only      forbid writting
+  -mp, --mountpoint     (default: ~/sshfs/tsunamiN)
+  -V, --verbose
+EOF
+# EOF is found above and hence cat command stops reading. This is equivalent to echo but much neater when printing out.
+}
+
+# $@ is all command line parameters passed to the script.
+# -o is for short options like -v
+# -l is for long options with double dash like --version
+# the comma separates different long options
+# -a is for long options with single dash like -version
+options=$(getopt  -l "help,tsunami-number:,read-only,mountpoint:,ro,mp:,verbose" -o "hn:uV" -a -- "$@")
+
+# set --:
+# If no arguments follow this option, then the positional parameters are unset. Otherwise, the positional parameters
+# are set to the arguments, even if some of them begin with a ‘-’.
+eval set -- "$options"
+
+TSUNAMI_NUMBER=3
+
+while true
+do
+case $1 in
+-h|--help)
+    echoHelp
+    exit 0
+    ;;
+-n|--tsunami-number)
+    shift
+    export TSUNAMI_NUMBER=$1
+    ;;
+--ro|--read-only)
+    export READ_ONLY=",ro"
+    ;;
+--mp|--mountpoint)
+    shift
+    export FETALMRI_SSHFS_PATH=$1
+    ;;
+-V|--verbose)
+    export VERBOSE=true
+    ;;
+--)
+    shift
+    [ -z "$1" ] && echoHelp && exit 1
+    [ ! -z "$2" ] && echoHelp && exit 1
+    export TSUNAMI_USER=$1
+
+    break;;
+esac
+shift
+done
+
+if [ $VERBOSE ]
+then
+    echo "TSUNAMI_NUMBER=$TSUNAMI_NUMBER"
+    [ ! -z $READ_ONLY ] && echo "READ_ONLY"
+    echo "TSUNAMI_USER=$TSUNAMI_USER"
+    echo "FETALMRI_SSHFS_PATH=$FETALMRI_SSHFS_PATH"
+fi
+
+if [ "$TSUNAMI_USER" ]
+then
+
+    [ -z "$FETALMRI_SSHFS_PATH" ] && FETALMRI_SSHFS_PATH="$HOME/sshfs/tsunami$TSUNAMI_NUMBER"
+    mkdir -p "$FETALMRI_SSHFS_PATH"
+    TSUNAMI_USER=$1
+    sshfs -o reconnect,ServerAliveInterval=60,follow_symlinks"$READ_ONLY" -C "$TSUNAMI_USER"@tsunami"$TSUNAMI_NUMBER".impa.br: "$FETALMRI_SSHFS_PATH"
+
+fi
