@@ -12,7 +12,7 @@ A 3D Slicer plugin that segments the amniotic fluid in Fetal MRI exams and provi
 
 ## Installation Instructions
 
-To instal AmnioML, follow the instructions bellow after downloading one of the ![releases](.) or building the plugin yourself.
+To instal AmnioML, follow the instructions bellow after downloading one of the ![releases](https://github.com/dccsillag/amnioml/releases/) or building the plugin yourself.
 
 1. Open the 3D Slicer application.
 2. Click on Edit -> Application Settings.
