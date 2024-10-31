@@ -55,7 +55,7 @@ if ( $with_cuda -eq 1 ) {
     pip3 install torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 }
 
-pip install pytorch_lightning
+pip install pytorch_lightning==1.8.6
 pip install pynrrd
 pip install pyinstaller
 
